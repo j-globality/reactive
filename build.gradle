@@ -11,6 +11,10 @@ repositories {
 }
 
 dependencies {
+    def lombokVersion = '1.18.24'
+
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
     annotationProcessor("info.picocli:picocli-codegen")
     implementation("info.picocli:picocli")
     implementation("io.micronaut:micronaut-jackson-databind")
@@ -18,6 +22,7 @@ dependencies {
     implementation("jakarta.annotation:jakarta.annotation-api")
     runtimeOnly("ch.qos.logback:logback-classic")
     implementation("io.micronaut:micronaut-validation")
+    implementation 'io.projectreactor.addons:reactor-pool:0.2.9'
 
     testImplementation("io.micronaut:micronaut-http-client")
 
@@ -25,20 +30,19 @@ dependencies {
 
 
 application {
-    mainClass.set("guide.ReactiveCommand")
+    mainClass.set("guide.Application")
 }
 java {
     sourceCompatibility = JavaVersion.toVersion("17")
     targetCompatibility = JavaVersion.toVersion("17")
 }
 
+graalvmNative.toolchainDetection = false
 micronaut {
+    runtime("netty")
     testRuntime("junit5")
     processing {
         incremental(true)
         annotations("guide.*")
     }
 }
-
-
-
