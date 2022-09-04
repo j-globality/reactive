@@ -21,16 +21,21 @@ public class UserService {
     }
 
     public Mono<User> getUserByEmail(String email) {
-        return userRepository.getUserByEmail(email)
-                .log()
-                .doOnNext(System.out::println);
+        /**
+         * todo: Log and then print the item
+         */
+        return userRepository.getUserByEmail(email);
     }
 
     public Flux<User> getAllUsers() {
-        return userRepository.getUsers()
-                .doOnNext(System.out::println)
-                .doFirst(() -> System.out.println("Starting: " + new Timestamp(new Date().getTime())))
-                .doOnComplete(() -> System.out.println("Ending: " + new Timestamp(new Date().getTime())));
+        /**
+         * todo: Execute side effects by chaining to print the
+         *  1. item emitted
+         *  2. time at the start of the sequence
+         *  3. time at the end of the sequence
+         */
+        return userRepository.getUsers();
+
     }
 
 }

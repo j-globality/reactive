@@ -21,18 +21,15 @@ public class UserRepository {
     };
 
     public Mono<User> getUserByEmail(String email) {
-        Mono<User> userMono = Mono.empty();
+        Mono<User> userMono = null; // todo: Create a new empty Mono
         for (User user : usersArray) {
-            if (user.getEmail() == email) userMono = Mono.just(user);
+            if (user.getEmail() == email) userMono = null; // todo: Create a Mono from the user
         }
-//        return Mono.just(u);
-//        return Mono.error(new IllegalArgumentException("Wrong args"));
         return userMono;
     }
 
     public Flux<User> getUsers() {
-//        Flux<User> usersFlux = Flux.fromArray(usersArray);
-        Flux<User> usersFlux = Flux.fromIterable(Arrays.asList(usersArray));
+        Flux<User> usersFlux = null; // todo: Create a Flux from the usersArray
         return usersFlux;
     }
 
