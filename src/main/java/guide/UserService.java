@@ -24,9 +24,7 @@ public class UserService {
 
     public Mono<Integer> getUserAgeByEmail(String email) {
         // todo: Log and then transform the Mono to return just the user email
-        return userRepository.getUserByEmail(email)
-                .log()
-                .map(User::getAge);
+        return null;
     }
 
     public Flux<User> getAllUsers() {
@@ -36,49 +34,37 @@ public class UserService {
          *  2. time at the start of the sequence
          *  3. time at the end of the sequence
          */
-        return userRepository.getUsers()
-                .doOnNext(System.out::println)
-                .doFirst(() -> System.out.println("Starting: " + new Timestamp(new Date().getTime())))
-                .doOnComplete(() -> System.out.println("Ending: " + new Timestamp(new Date().getTime())));
+        return null;
     }
 
     public Flux<User> getActiveUsers() {
         // todo: Filter users to get only active ones
-        return userRepository.getUsers()
-                .filter(user -> user.getActive() == true);
+        return null;
     }
 
     public Flux<User> getDistinctUsers() {
         // todo: Filter users to get only distinct users by email
-        return userRepository.getUsers()
-                .distinct((a) -> a.getEmail());
+        return null;
     }
 
     public Flux<User> getFirst2Users() {
         // todo: Get the first 2 users only
-        return userRepository.getUsers()
-                .take(2);
+        return null;
     }
 
     public Mono<Integer> getSumOfAges() {
         // todo: Get the sum of all user ages
-        BiFunction<Integer, Integer, Integer> bi = (a, b) -> a + b;
-        return userRepository.getUsers()
-                .map(User::getAge)
-                .reduce(bi);
+        return null;
     }
 
     public Flux<User> addDummyUser() {
         // todo: Add a dummy user to the beginning of the sequence
-        User[] users = new User[]{new User(UUID.randomUUID(), "dummy@b.com", 23, false)};
-        return userRepository.getUsers()
-                .startWith(users);
+        return null;
     }
 
     public Mono<Long> getTotal() {
         // todo: Get the total number of users
-        return userRepository.getUsers()
-                .count();
+        return null;
     }
 
 }

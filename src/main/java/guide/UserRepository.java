@@ -21,17 +21,17 @@ public class UserRepository {
 
     public Mono<User> getUserByEmail(String email) {
         // todo: Create a new empty Mono
-        Mono<User> userMono = Mono.empty();
+        Mono<User> userMono = null;
         for (User user : usersArray) {
             // todo: Create a Mono from the user
-            if (user.getEmail() == email) userMono = Mono.just(user);
+            if (user.getEmail() == email) userMono = null;
         }
         return userMono;
     }
 
     public Flux<User> getUsers() {
         // todo: Create a Flux from the usersArray
-        Flux<User> usersFlux = Flux.fromArray(usersArray);
+        Flux<User> usersFlux = null;
         return usersFlux;
     }
 
