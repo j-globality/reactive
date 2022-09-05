@@ -20,13 +20,43 @@ public class UserController {
     }
 
     @Get("/user")
-    public Mono<User> getUserByEmail() {
-        return userService.getUserByEmail("a1@b.com");
+    public Mono<String> getUserByEmail() {
+        return userService.getUserIdByEmail("a1@b.com");
+    }
+
+    @Get("/total")
+    public Mono<Long> getTotal() {
+        return userService.getTotal();
     }
 
     @Get("/all")
     public Flux<User> getUsers() {
         return userService.getAllUsers();
+    }
+
+    @Get("/active")
+    public Flux<User> getActiveUsers() {
+        return userService.getActiveUsers();
+    }
+
+    @Get("/unique")
+    public Flux<User> getDistinctUsers() {
+        return userService.getDistinctUsers();
+    }
+
+    @Get("/firstTwo")
+    public Flux<User> getFirst2Users() {
+        return userService.getFirst2Users();
+    }
+
+    @Get("/sum")
+    public Mono<Integer> getSum() {
+        return userService.getSumOfAges();
+    }
+
+    @Get("/dummy")
+    public Flux<User> addDummy() {
+        return userService.addDummyUser();
     }
 
 }

@@ -4,11 +4,10 @@ import jakarta.inject.Singleton;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.Arrays;
 import java.util.UUID;
 
 /**
- * If we have an actual DB, this would be an
+ * Note: If we have an actual DB, this would be an
  * interface extending ReactiveStreamsCrudRepository.
  */
 @Singleton
@@ -25,14 +24,11 @@ public class UserRepository {
         for (User user : usersArray) {
             if (user.getEmail() == email) userMono = Mono.just(user);
         }
-//        return Mono.just(u);
-//        return Mono.error(new IllegalArgumentException("Wrong args"));
         return userMono;
     }
 
     public Flux<User> getUsers() {
-//        Flux<User> usersFlux = Flux.fromArray(usersArray);
-        Flux<User> usersFlux = Flux.fromIterable(Arrays.asList(usersArray));
+        Flux<User> usersFlux = Flux.fromArray(usersArray);
         return usersFlux;
     }
 
