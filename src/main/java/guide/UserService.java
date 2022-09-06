@@ -46,13 +46,13 @@ public class UserService {
     public Flux<User> getActiveUsers() {
         // todo: Filter users to get only active ones
         return userRepository.getUsers()
-                .filter(user -> user.getActive() == true);
+                .filter(User::isActive);
     }
 
     public Flux<User> getDistinctUsers() {
         // todo: Filter users to get only distinct users by email
         return userRepository.getUsers()
-                .distinct((a) -> a.getEmail());
+                .distinct(User::getEmail);
     }
 
     public Flux<User> getFirst2Users() {
@@ -63,10 +63,9 @@ public class UserService {
 
     public Mono<Integer> getSumOfAges() {
         // todo: Get the sum of all user ages
-        BiFunction<Integer, Integer, Integer> bi = (a, b) -> a + b;
         return userRepository.getUsers()
                 .map(User::getAge)
-                .reduce(bi);
+                .reduce(Integer::sum);
     }
 
     public Flux<User> addDummyUser() {
