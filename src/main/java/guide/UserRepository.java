@@ -4,6 +4,8 @@ import jakarta.inject.Singleton;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -13,26 +15,20 @@ import java.util.UUID;
 @Singleton
 public class UserRepository {
 
-    private User[] usersArray = {
+    private Set<User> users = Set.of(
             new User(UUID.randomUUID(), "a1@b.com", 18, true),
             new User(UUID.randomUUID(), "a@b.com", 67, false),
-            new User(UUID.randomUUID(), "a@b.com", 34, true),
-    };
+            new User(UUID.randomUUID(), "a@b.com", 34, true)
+    );
 
     public Mono<User> getUserByEmail(String email) {
-        // todo: Create a new empty Mono
-        Mono<User> userMono = null;
-        for (User user : usersArray) {
-            // todo: Create a Mono from the user
-            if (user.getEmail() == email) userMono = null;
-        }
-        return userMono;
+        //@todo: potential bug here as more than one user can have the same email
+        return Mono.empty();
     }
 
     public Flux<User> getUsers() {
         // todo: Create a Flux from the usersArray
-        Flux<User> usersFlux = null;
-        return usersFlux;
+        return Flux.empty();
     }
 
 }

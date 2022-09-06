@@ -34,37 +34,37 @@ public class UserService {
          *  2. time at the start of the sequence
          *  3. time at the end of the sequence
          */
-        return null;
+        return Flux.empty();
     }
 
     public Flux<User> getActiveUsers() {
         // todo: Filter users to get only active ones
-        return null;
+        return Flux.empty();
     }
 
     public Flux<User> getDistinctUsers() {
         // todo: Filter users to get only distinct users by email
-        return null;
+        return Flux.empty();
     }
 
     public Flux<User> getFirst2Users() {
         // todo: Get the first 2 users only
-        return null;
+        return Flux.empty();
     }
 
     public Mono<Integer> getSumOfAges() {
         // todo: Get the sum of all user ages
-        return null;
+        return Mono.empty();
     }
 
     public Flux<User> addDummyUser() {
         // todo: Add a dummy user to the beginning of the sequence
-        return null;
+        return Flux.empty();
     }
 
     public Mono<Long> getTotal() {
         // todo: Get the total number of users
-        return null;
+        return Mono.empty();
     }
 
 }
